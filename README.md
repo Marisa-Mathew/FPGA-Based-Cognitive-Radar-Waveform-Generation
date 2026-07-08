@@ -76,7 +76,7 @@ fpga-nlfm-waveform-generator
 ├── python/
 │   ├── generate_nlfm.py
 │
-│   └── verify_waveform.py
+│   └── verify_waveform(performance).py
 │
 ├── constraints/
 │   └── top.xdc
