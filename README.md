@@ -11,13 +11,12 @@
 
 This project implements a **Non-Linear Frequency Modulated (NLFM) waveform generator** for Cognitive Radar applications using a **Xilinx Zynq UltraScale+ FPGA**.
 
-The NLFM waveform is generated offline in Python, converted into a COE (Coefficient) memory initialization file, stored inside the FPGA Block RAM using the Xilinx Block Memory Generator IP, and accessed through a custom SystemVerilog IP core.
+The NLFM waveform is generated offline in Python, converted into a COE (Coefficient) memory initialization file, stored inside the FPGA Block RAM using the Xilinx NLFM  Generator IP, and accessed through a custom SystemVerilog IP core.
 
 The design demonstrates the complete FPGA implementation flow:
 
 - Python waveform generation
 - COE file generation
-- Block RAM initialization
 - Custom IP development
 - Vivado IP Packaging
 - IP Integrator Block Design
@@ -29,9 +28,8 @@ The design demonstrates the complete FPGA implementation flow:
 
 ## Features
 
-- Offline NLFM waveform generation using Python
+-  NLFM waveform generation using Python
 - Automatic COE file generation
-- Block Memory Generator based waveform storage
 - Custom reusable SystemVerilog IP
 - IP Integrator compatible design
 - FPGA implementation using Vivado 2023.1
@@ -67,7 +65,6 @@ fpga-nlfm-waveform-generator
 │
 ├── README.md
 ├── LICENSE
-
 │
 ├── rtl/
 │   ├── nlfm_waveform_gen.sv
@@ -86,9 +83,7 @@ fpga-nlfm-waveform-generator
 │
 ├── images/
 │ 
-│   ├── block_design.png
-│   ├── simulation.png
-│ 
+│   ├── block_design.png 
 │   └── ila_capture.png
 │
 └── bitstream/
@@ -104,9 +99,6 @@ Python NLFM Generator
           │
           ▼
 Generate COE File
-          │
-          ▼
-Block Memory Generator (ROM)
           │
           ▼
 Custom NLFM IP
@@ -127,29 +119,19 @@ Hardware Verification
 
 1. Generate the NLFM waveform using Python.
 2. Convert waveform samples into a COE file.
-3. Create a Block Memory Generator configured as Single Port ROM.
-4. Load the COE file into the Block Memory Generator.
-5. Develop the custom `nlfm_waveform_gen` SystemVerilog module.
-6. Package the design as reusable Vivado IP.
-7. Create a Block Design using IP Integrator.
-8. Generate HDL Wrapper.
-9. Run Synthesis.
-10. Run Implementation.
-11. Generate Bitstream.
-12. Program the FPGA.
+3. Load the COE file into the Block Memory Generator.
+4. Develop the custom `nlfm_waveform_gen` SystemVerilog module.
+5. Package the design as reusable Vivado IP.
+6. Create a Block Design using IP Integrator.
+7. Generate HDL Wrapper.
+8. Run Synthesis.
+9. Run Implementation.
+10. Generate Bitstream.
+11. Program the FPGA.
 
 ---
 
-## Simulation
 
-The waveform generator was verified using Vivado Simulator before hardware implementation.
-
-Simulation verifies:
-
-- Address generation
-- ROM output
-- Clock synchronization
-- Waveform correctness
 
 ---
 
@@ -162,7 +144,7 @@ Hardware verification included:
 - Successful synthesis
 - Successful implementation
 - Successful bitstream generation
-- BRAM initialization using COE
+- Initialization using COE
 - Custom IP integration
 - Functional verification
 
